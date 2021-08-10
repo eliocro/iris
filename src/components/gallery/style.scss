@@ -1,0 +1,33 @@
+
+.gallery {
+  min-height: var(--image-height);
+  margin-top: 20px;
+
+  & > div {
+    display: block;
+    float: left;
+    margin-right: 4px;
+    margin-bottom: 4px;
+
+    height: var(--image-height);
+    max-width: calc(var(--image-height) * 1.750);
+    min-width: calc(var(--image-height) * 0.666);
+
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  img {
+    display: block;
+    height: var(--image-height);
+    margin: 0 auto;
+    opacity: 0;
+  }
+}

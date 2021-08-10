@@ -1,0 +1,17 @@
+@import '../../sass/base/variables.scss';
+
+.main-content {
+  position: fixed;
+  // overflow: auto;
+  overflow: overlay;
+  top: 0;
+  right: 0;
+  width: calc(100% - var(--sidebar-width));
+  height: calc(100% - #{$footer-height});
+
+  padding: 20px 30px 40px;
+
+  color: white;
+  background-color: $color-gray-dark1;
+
+}

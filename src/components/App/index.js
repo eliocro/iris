@@ -1,10 +1,18 @@
 import React from 'react';
 import './style.scss';
 
+import Footer from '../footer';
+import Sidebar from '../sidebar';
+import Content from '../content';
+
+
 function App() {
   return (
-    <div>
-      <h1>App</h1>
+    <div className="wrapper">
+      <h1 className="hidden">Iris</h1>
+      <Sidebar />
+      <Content />
+      <Footer />
     </div>
   );
 }
