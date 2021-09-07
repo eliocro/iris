@@ -1,15 +1,29 @@
 @import '../../sass/base/variables.scss';
 
-footer.footer {
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: $footer-height;
 
-  padding: 15px;
-
   border-top: 1px solid $color-border1;
   color: white;
   background-color: $color-gray-dark2;
+
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr 1fr;
+
+    h5 {
+      font-weight: 300;
+    }
+
+    > div {
+      padding: 22px 10px;
+      font-weight: 300;
+      text-align: center;
+    }
+  }
 }

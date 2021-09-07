@@ -1,0 +1,28 @@
+@import '../../../sass/base/variables.scss';
+
+.thumb-layout {
+
+  &__options {
+    & > span {
+      position: relative;
+      display: inline-block;
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+
+    input[type="radio"] {
+      position: absolute;
+      clip: rect(0,0,0,0);
+
+      & + label span {
+        position: absolute;
+        clip: rect(0 0 0 0);
+      }
+
+      &:checked + label svg {
+        fill: $color-green;
+      }
+    }
+  }
+
+}

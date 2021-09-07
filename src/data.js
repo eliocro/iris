@@ -67,10 +67,16 @@ export function getAlbums() {
 
 // other helpers
 
-window.setImageHeight = function(px = 180) {
+export function setImageHeight(px = 180) {
   document.documentElement.style.setProperty('--image-height', px + 'px');
 }
 
-window.setSidebarWidth = function(px = 250) {
+export function setSidebarWidth(px = 250) {
   document.documentElement.style.setProperty('--sidebar-width', px + 'px');
+}
+
+export function setImageLayout(layout) {
+  const list = document.body.classList;
+  Array.from(list).forEach(cls => cls.startsWith('thumb-layout--') && list.remove(cls));
+  list.add('thumb-layout--' + layout);
 }

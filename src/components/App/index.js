@@ -1,9 +1,10 @@
 import React from 'react';
-import './style.scss';
 
 import Footer from '../footer';
 import Sidebar from '../sidebar';
 import Content from '../content';
+
+import './style.scss';
 
 
 function App() {
