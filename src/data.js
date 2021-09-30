@@ -59,10 +59,19 @@ export function getAlbums() {
   return albums.slice(0, 6).map(title => ({
     title,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    images: images.sort(() => .5 - Math.random()),
+    images: images.map(url => ({ url, hash: getHash(title + url) })).sort(() => .5 - Math.random()),
   }))
 }
 
+
+export function getHash(str = '') {
+    let hash = 0;
+    for (let i = 0, l = str.length; i < l; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0;
+    }
+    return hash;
+};
 
 
 // other helpers

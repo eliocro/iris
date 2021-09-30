@@ -5,10 +5,10 @@ import './style.scss';
 import { albums } from '../../data';
 
 
-function Sidebar() {
+function AlbumList() {
   return (
-    <aside className="sidebar">
-      {/* <h3>Albums</h3> */}
+    <aside className="album-list">
+      <h3>Albums</h3>
       <ul>
         { albums.map((a,i) => <li key={ i }>{ a }</li>) }
       </ul>
@@ -16,4 +16,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default AlbumList;

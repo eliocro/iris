@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import AlbumList from '../album-list';
 import Album from '../album';
+
 import { getAlbums } from '../../data';
 
 import './style.scss';
 
 
-function Content() {
+function Content({ selected, selectImage, clearSelection }) {
+  const [albums, setAlbums] = useState([]);
 
-  const albums = getAlbums();
+  useEffect(() => {
+    setAlbums(getAlbums());
+  }, []);
 
   return (
-    <main className="main-content">
-      { albums.map((a, i) => <Album key={ i } data={ a } />) }
+    <main>
+      <AlbumList />
+      <section className="main-content">
+        { albums.map((a, i) => (
+          <Album
+            key={ i } data={ a }
+            selected={ selected } selectImage={ selectImage } clearSelection={ clearSelection }
+          />
+        )) }
+      </section>
     </main>
   );
 }
