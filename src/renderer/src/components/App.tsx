@@ -9,6 +9,24 @@ const StyledWrapper = styled.div`
   height: 100%;
 `;
 
+const StyledDragBar = styled.div`
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--titlebar-height);
+  -webkit-app-region: drag;
+
+  h1 {
+    padding: 8px 0;
+    font-size: 20px;
+    color: #CCC;
+    text-align: center;
+    pointer-events: none;
+  }
+`;
+
 type SelectedImages = {
   [hash: number]: string;
 };
@@ -47,7 +65,9 @@ function App() {
 
   return (
     <StyledWrapper>
-      <h1 className="hidden">Iris</h1>
+      <StyledDragBar>
+        <h1>I R I S</h1>
+      </StyledDragBar>
       <Content
         selected={selected}
         selectImage={selectImage}

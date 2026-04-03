@@ -17,6 +17,7 @@ export { colors };
 
 export const FOOTER_HEIGHT = '90px';
 export const SIDEBAR_WIDTH = '250px';
+export const TITLEBAR_HEIGHT = '40px';
 
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
@@ -25,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
     --image-height: 180px;
     --sidebar-width: ${SIDEBAR_WIDTH};
     --footer-height: ${FOOTER_HEIGHT};
+    --titlebar-height: ${TITLEBAR_HEIGHT};
   }
 
   *, *::before, *::after {
@@ -50,6 +52,28 @@ const GlobalStyles = createGlobalStyle`
 
   .hidden {
     display: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${colors.grayMid1};
+    border-radius: 3px;
+
+    &:hover {
+      background: ${colors.grayLight1};
+    }
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
   }
 
   h1, h2, h3, h4, h5, h6 {

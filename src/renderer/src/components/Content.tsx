@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { colors, FOOTER_HEIGHT } from '../GlobalStyles';
+import { colors, FOOTER_HEIGHT, TITLEBAR_HEIGHT } from '../GlobalStyles';
 import AlbumList from './AlbumList';
 import Album from './Album';
 import { getAlbums, AlbumData, ImageItem } from '../data';
@@ -9,10 +9,10 @@ import { getAlbums, AlbumData, ImageItem } from '../data';
 const StyledSection = styled.section`
   position: fixed;
   overflow: overlay;
-  top: 0;
+  top: ${TITLEBAR_HEIGHT};
   right: 0;
   width: calc(100% - var(--sidebar-width));
-  height: calc(100% - ${FOOTER_HEIGHT});
+  height: calc(100% - ${FOOTER_HEIGHT} - ${TITLEBAR_HEIGHT});
   padding: 20px 30px 40px;
   color: white;
   background-color: ${colors.grayDark1};

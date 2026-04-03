@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-import { colors, FOOTER_HEIGHT } from '../GlobalStyles';
+import { colors, FOOTER_HEIGHT, TITLEBAR_HEIGHT } from '../GlobalStyles';
 import { albums } from '../data';
 
 const StyledAside = styled.aside`
   position: fixed;
   overflow: overlay;
-  top: 0;
+  top: ${TITLEBAR_HEIGHT};
   left: 0;
   width: var(--sidebar-width);
-  height: calc(100% - ${FOOTER_HEIGHT});
+  height: calc(100% - ${FOOTER_HEIGHT} - ${TITLEBAR_HEIGHT});
   padding: 20px;
   color: ${colors.white};
   background-color: ${colors.black};
