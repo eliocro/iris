@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ImageItem } from '../data';
+
+import { ImageItem } from '../../data';
 
 const StyledSection = styled.section`
   min-height: var(--image-height);

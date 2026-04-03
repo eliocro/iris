@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import Gallery from './Gallery';
-import { AlbumData, ImageItem } from '../data';
+import { AlbumData, ImageItem } from '../../data';
 
 const StyledArticle = styled.article`
   &:not(:last-child) {

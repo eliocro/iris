@@ -5,17 +5,6 @@ import SelectionPreview from './SelectionPreview';
 import ThumbHeight from './ThumbHeight';
 import ThumbLayout from './ThumbLayout';
 
-const StyledFooter = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: ${FOOTER_HEIGHT};
-  border-top: 1px solid ${colors.border1};
-  color: white;
-  background-color: ${colors.grayDark2};
-`;
-
 const StyledInner = styled.div`
   display: grid;
   grid-template-columns: 2fr 4fr 1fr 1fr;
@@ -56,3 +45,13 @@ function Footer({ selected }: FooterProps) {
 }
 
 export default Footer;
+
+const StyledFooter = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: ${FOOTER_HEIGHT};
+
+  color: white;
+`;
