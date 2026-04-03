@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { colors } from '../../GlobalStyles';
 import { getAlbums, ImageItem } from '../../data';
 import Album from './Album';
 
@@ -38,6 +37,5 @@ const StyledSection = styled.div`
   padding: 1rem 1.5rem;
 
   border-radius: 1rem;
-  background-color: ${colors.grayDark1};
-  color: white;
+  background-color: var(--color-background-secondary);
 `;
