@@ -3,9 +3,48 @@ import styled from 'styled-components';
 
 import { ImageItem } from '../../data';
 
+type SelectedImages = {
+  [hash: number]: string;
+};
+
+type GalleryProps = {
+  images: ImageItem[];
+  selected: SelectedImages;
+  selectImage: (image: ImageItem, withKey: boolean) => void;
+  clearSelection: () => void;
+};
+
+export default function Gallery({
+  images,
+  selected,
+  selectImage,
+  clearSelection,
+}: GalleryProps) {
+  const onImageClick = (ev: React.MouseEvent, idx: number): void => {
+    ev.stopPropagation();
+    selectImage(images[idx], ev.ctrlKey || ev.metaKey);
+  };
+
+  return (
+    <StyledSection onClick={() => clearSelection()}>
+      {images.map((img, idx) => (
+        <figure
+          key={idx}
+          style={{ backgroundImage: `url(${img.url})` }}
+          aria-selected={selected[img.hash] ? 'true' : undefined}
+          onClick={(ev) => onImageClick(ev, idx)}
+          onDoubleClick={(ev) => console.log('double-click', ev)}
+        >
+          <img src={img.url} alt="" />
+        </figure>
+      ))}
+    </StyledSection>
+  );
+}
+
 const StyledSection = styled.section`
   min-height: var(--image-height);
-  margin-top: 20px;
+  margin-top: 1.25rem;
 
   &::after {
     content: '';
@@ -24,74 +63,31 @@ const StyledSection = styled.section`
       display: block;
     }
   }
-`;
 
-const StyledImageDiv = styled.div<{ $selected: boolean }>`
-  display: block;
-  float: left;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  max-width: calc(var(--image-height) * 1.75);
-  min-width: calc(var(--image-height) * 0.666);
-  height: var(--image-height);
-  width: calc(var(--image-height) * 1.25);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
+  figure {
+    display: block;
+    float: left;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    max-width: calc(var(--image-height) * 1.75);
+    min-width: calc(var(--image-height) * 0.666);
+    height: var(--image-height);
+    width: calc(var(--image-height) * 1.25);
 
-  .thumb-layout--masonry & {
-    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+
+    .thumb-layout--masonry & {
+      width: auto;
+    }
+    .thumb-layout--contain & {
+      background-size: contain;
+    }
+
+    &[aria-selected='true'] {
+      box-shadow: inset 0px 0px 0px 4px rgba(255, 255, 255, 0.75);
+    }
   }
-
-  .thumb-layout--contain & {
-    background-size: contain;
-  }
-
-  ${({ $selected }) =>
-    $selected &&
-    `
-    box-shadow: inset 0px 0px 0px 4px rgba(255, 255, 255, 0.75);
-  `}
 `;
-
-interface SelectedImages {
-  [hash: number]: string;
-}
-
-interface GalleryProps {
-  images: ImageItem[];
-  selected: SelectedImages;
-  selectImage: (image: ImageItem, withKey: boolean) => void;
-  clearSelection: () => void;
-}
-
-function Gallery({
-  images,
-  selected,
-  selectImage,
-  clearSelection,
-}: GalleryProps) {
-  const onImageClick = (ev: React.MouseEvent, idx: number): void => {
-    ev.stopPropagation();
-    selectImage(images[idx], ev.ctrlKey || ev.metaKey);
-  };
-
-  return (
-    <StyledSection onClick={() => clearSelection()}>
-      {images.map((img, i) => (
-        <StyledImageDiv
-          key={i}
-          style={{ backgroundImage: `url(${img.url})` }}
-          $selected={!!selected[img.hash]}
-          onClick={(ev) => onImageClick(ev, i)}
-          onDoubleClick={(ev) => console.log('double-click', ev)}
-        >
-          <img src={img.url} alt="" />
-        </StyledImageDiv>
-      ))}
-    </StyledSection>
-  );
-}
-
-export default Gallery;

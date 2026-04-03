@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-import { colors } from '../../GlobalStyles';
 import { albums } from '../../data';
 
 export default function Sidebar() {
   return (
     <StyledAside>
-      <h3>Albums</h3>
+      <h2>Albums</h2>
       <ul>
         {albums.map((a, i) => (
           <li key={i}>{a}</li>
@@ -22,12 +21,12 @@ const StyledAside = styled.aside`
   overflow: overlay;
 
   border-radius: 1rem;
-  /* border: 1px solid red; */
-  background-color: #111;
-  color: ${colors.white};
+  background-color: var(--color-background-secondary);
 
-  h3 {
+  h2 {
+    margin-top: 0;
     margin-bottom: 0.5rem;
+    font-size: 1.25rem;
   }
 
   li {
@@ -35,13 +34,13 @@ const StyledAside = styled.aside`
     margin-bottom: 0.25rem;
     font-size: 1rem;
 
-    color: ${colors.grayLight1};
+    color: var(--color-content-secondary);
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 
     &:hover {
-      color: ${colors.white};
+      color: var(--color-content-default);
       cursor: pointer;
     }
   }

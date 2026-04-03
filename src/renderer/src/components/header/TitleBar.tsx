@@ -13,13 +13,18 @@ const StyledHeader = styled.header`
 
   position: fixed;
   z-index: 9999;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: var(--titlebar-height);
 
   h1 {
-    padding: 8px 0;
-    font-size: 20px;
+    margin: 0.5rem auto;
+    width: fit-content;
     color: #ccc;
+
+    font-size: 1.25rem;
+    line-height: 1.2;
     text-align: center;
     pointer-events: none;
   }

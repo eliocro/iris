@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 
-import Gallery from './Gallery';
 import { AlbumData, ImageItem } from '../../data';
+import Gallery from './Gallery';
 
-const StyledArticle = styled.article`
-  &:not(:last-child) {
-    margin-bottom: 40px;
-  }
-`;
-
-interface SelectedImages {
+type SelectedImages = {
   [hash: number]: string;
-}
+};
 
-interface AlbumProps {
+type AlbumProps = {
   data: AlbumData;
   selected: SelectedImages;
   selectImage: (image: ImageItem, withKey: boolean) => void;
   clearSelection: () => void;
-}
+};
 
-function Album({ data, selected, selectImage, clearSelection }: AlbumProps) {
+export default function Album({
+  data,
+  selected,
+  selectImage,
+  clearSelection,
+}: AlbumProps) {
   return (
     <StyledArticle>
       <h2>{data.title}</h2>
@@ -35,4 +34,16 @@ function Album({ data, selected, selectImage, clearSelection }: AlbumProps) {
   );
 }
 
-export default Album;
+const StyledArticle = styled.article`
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    margin-bottom: 0.25rem;
+    font-size: 1.5rem;
+  }
+  p {
+    color: var(--color-content-secondary);
+  }
+`;

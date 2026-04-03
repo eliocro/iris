@@ -15,76 +15,55 @@ const colors = {
 
 export { colors };
 
-export const FOOTER_HEIGHT = '90px';
-export const SIDEBAR_WIDTH = '250px';
-export const TITLEBAR_HEIGHT = '40px';
-
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
 
   :root {
+    --color-background-default: ${colors.black};
+    --color-background-secondary: ${colors.grayDark1};
+
+    --color-content-default: ${colors.white};
+    --color-content-secondary: ${colors.grayLight1};
+
+    --color-active: ${colors.green};
+
     --image-height: 180px;
-    --sidebar-width: ${SIDEBAR_WIDTH};
-    --footer-height: ${FOOTER_HEIGHT};
-    --titlebar-height: ${TITLEBAR_HEIGHT};
+    --sidebar-width: 250px;
+    --footer-height: 90px;
+    --titlebar-height: 40px;
   }
 
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  * {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
 
   body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
-    color: ${colors.white};
     background-color: ${colors.black};
-  }
-
-  ul, ol {
-    margin: 0;
-    padding: 0;
-
-    li {
-      list-style: none;
-    }
-  }
-
-  .hidden {
-    display: none;
+    color: ${colors.white};
+    font-family: 'Open Sans', sans-serif;
   }
 
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
-
   ::-webkit-scrollbar-track {
     background: transparent;
   }
-
   ::-webkit-scrollbar-thumb {
     background: ${colors.grayMid1};
     border-radius: 3px;
-
     &:hover {
       background: ${colors.grayLight1};
     }
   }
-
   ::-webkit-scrollbar-corner {
     background: transparent;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-
-    & + p {
-      margin-top: 0.25em;
-      color: ${colors.grayLight1};
-      font-size: 0.85em;
-    }
   }
 `;
 

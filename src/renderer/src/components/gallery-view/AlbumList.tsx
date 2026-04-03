@@ -4,13 +4,13 @@ import { colors } from '../../GlobalStyles';
 import { getAlbums, ImageItem } from '../../data';
 import Album from './Album';
 
+const albums = getAlbums();
+
 type AlbumListProps = {
   selected: { [hash: number]: string };
   selectImage: (image: ImageItem, withKey: boolean) => void;
   clearSelection: () => void;
 };
-
-const albums = getAlbums();
 
 export default function AlbumList({
   selected,

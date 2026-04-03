@@ -5,64 +5,40 @@ import ViewCompactOutlinedIcon from '@mui/icons-material/ViewCompactOutlined';
 import ViewModuleOutlinedIcon from '@mui/icons-material/ViewModuleOutlined';
 import ViewQuiltOutlinedIcon from '@mui/icons-material/ViewQuiltOutlined';
 
-import { colors } from '../../GlobalStyles';
 import { setImageLayout } from '../../data';
 
-const StyledWrapper = styled.div``;
+const DEFAULT_LAYOUT = 'masonry';
 
-const StyledOptions = styled.div`
-  > span {
-    position: relative;
-    display: inline-block;
-    margin-left: 4px;
-    margin-right: 4px;
-  }
-`;
-
-const StyledRadio = styled.input`
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-
-  & + label span {
-    position: absolute;
-    clip: rect(0 0 0 0);
-  }
-
-  &:checked + label svg {
-    fill: ${colors.green};
-  }
-`;
-
-const StyledLabel = styled.label``;
-
-const DEF_THUMB_LAYOUT = 'masonry';
-
-interface LayoutOption {
-  title: string;
+type LayoutOption = {
+  value: string;
+  label: string;
   icon: React.JSX.Element;
-}
-
-const THUMB_LAYOUT_OPTIONS: Record<string, LayoutOption> = {
-  masonry: {
-    title: 'Masonry',
-    icon: <ViewCompactOutlinedIcon />,
-  },
-  square: {
-    title: 'Square',
-    icon: <ViewModuleOutlinedIcon />,
-  },
-  contain: {
-    title: 'Contained',
-    icon: <ViewQuiltOutlinedIcon />,
-  },
 };
 
-function ThumbLayout() {
+const LAYOUT_OPTIONS: LayoutOption[] = [
+  {
+    value: 'masonry',
+    label: 'Masonry',
+    icon: <ViewCompactOutlinedIcon />,
+  },
+  {
+    value: 'square',
+    label: 'Square',
+    icon: <ViewModuleOutlinedIcon />,
+  },
+  {
+    value: 'contain',
+    label: 'Contained',
+    icon: <ViewQuiltOutlinedIcon />,
+  },
+];
+
+export default function ThumbLayout() {
   const [thumbLayout, setThumbLayout] = useState('');
 
   useEffect(() => {
     const l = window.localStorage.getItem('IRIS_IMAGE_LAYOUT');
-    setThumbLayout(l || DEF_THUMB_LAYOUT);
+    setThumbLayout(l || DEFAULT_LAYOUT);
   }, []);
 
   useEffect(() => {
@@ -73,31 +49,58 @@ function ThumbLayout() {
   }, [thumbLayout]);
 
   return (
-    <StyledWrapper>
-      <h5>Thumbnail Layout</h5>
-      <StyledOptions>
-        {Object.keys(THUMB_LAYOUT_OPTIONS).map((opt, i) => (
-          <span key={i}>
-            <StyledRadio
-              id={`radio-layout-${i}`}
-              type="radio"
-              name="layout"
-              value={opt}
-              checked={thumbLayout === opt}
-              onChange={(ev) => setThumbLayout(ev.target.value)}
-            />
-            <StyledLabel
-              htmlFor={`radio-layout-${i}`}
-              title={THUMB_LAYOUT_OPTIONS[opt].title}
-            >
-              <span>{THUMB_LAYOUT_OPTIONS[opt].title}</span>
-              {THUMB_LAYOUT_OPTIONS[opt].icon}
-            </StyledLabel>
-          </span>
+    <StyledDiv>
+      <h3>Thumbnail Layout</h3>
+      <div>
+        {LAYOUT_OPTIONS.map((opt, idx) => (
+          <button
+            key={idx}
+            aria-selected={thumbLayout === opt.value ? 'true' : undefined}
+            aria-label={opt.label}
+            onClick={() => setThumbLayout(opt.value)}
+          >
+            {opt.icon}
+          </button>
         ))}
-      </StyledOptions>
-    </StyledWrapper>
+      </div>
+    </StyledDiv>
   );
 }
 
-export default ThumbLayout;
+const StyledDiv = styled.div`
+  position: relative;
+  padding: 1.25rem 1rem;
+
+  font-size: 0.875rem;
+  line-height: var(--preview-height);
+  font-weight: 500;
+  text-align: center;
+
+  h3 {
+    margin-bottom: 0.25rem;
+  }
+
+  div {
+    display: flex;
+    gap: 0.5rem;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  button {
+    padding: 0.125rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-background-secondary);
+    color: inherit;
+    cursor: pointer;
+
+    &[aria-selected='true'] {
+      background-color: transparent;
+      color: var(--color-active);
+      cursor: initial;
+    }
+    & svg {
+      display: block;
+    }
+  }
+`;
