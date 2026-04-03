@@ -1,0 +1,32 @@
+@use 'variables' as *;
+
+:root {
+  --image-height: 180px;
+  --sidebar-width: 250px;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  color: $color-white;
+  background-color: $color-black;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+.hidden {
+  display: none;
+}
