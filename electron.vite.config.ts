@@ -10,12 +10,5 @@ export default defineConfig({
   },
   renderer: {
     plugins: [react()],
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        },
-      },
-    },
   },
 })

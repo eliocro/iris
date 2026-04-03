@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { colors, FOOTER_HEIGHT } from '../GlobalStyles'
+import AlbumList from './AlbumList'
+import Album from './Album'
+import { getAlbums, AlbumData, ImageItem } from '../data'
 
-import AlbumList from '../album-list'
-import Album from '../album'
-
-import { getAlbums, AlbumData, ImageItem } from '../../data'
-
-import './style.scss'
+const StyledSection = styled.section`
+  position: fixed;
+  overflow: overlay;
+  top: 0;
+  right: 0;
+  width: calc(100% - var(--sidebar-width));
+  height: calc(100% - ${FOOTER_HEIGHT});
+  padding: 20px 30px 40px;
+  color: white;
+  background-color: ${colors.grayDark1};
+`
 
 interface SelectedImages {
   [hash: number]: string
@@ -27,7 +37,7 @@ function Content({ selected, selectImage, clearSelection }: ContentProps): React
   return (
     <main>
       <AlbumList />
-      <section className="main-content">
+      <StyledSection>
         {albums.map((a, i) => (
           <Album
             key={i}
@@ -37,7 +47,7 @@ function Content({ selected, selectImage, clearSelection }: ContentProps): React
             clearSelection={clearSelection}
           />
         ))}
-      </section>
+      </StyledSection>
     </main>
   )
 }

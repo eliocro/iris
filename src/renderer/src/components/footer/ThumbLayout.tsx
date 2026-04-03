@@ -1,10 +1,37 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { colors } from '../../GlobalStyles'
 import ViewCompactOutlinedIcon from '@mui/icons-material/ViewCompactOutlined'
 import ViewModuleOutlinedIcon from '@mui/icons-material/ViewModuleOutlined'
 import ViewQuiltOutlinedIcon from '@mui/icons-material/ViewQuiltOutlined'
-import { setImageLayout } from '../../../data'
+import { setImageLayout } from '../../data'
 
-import './style.scss'
+const StyledWrapper = styled.div``
+
+const StyledOptions = styled.div`
+  > span {
+    position: relative;
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+`
+
+const StyledRadio = styled.input`
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+
+  & + label span {
+    position: absolute;
+    clip: rect(0 0 0 0);
+  }
+
+  &:checked + label svg {
+    fill: ${colors.green};
+  }
+`
+
+const StyledLabel = styled.label``
 
 const DEF_THUMB_LAYOUT = 'masonry'
 
@@ -44,12 +71,12 @@ function ThumbLayout(): React.JSX.Element {
   }, [thumbLayout])
 
   return (
-    <div className="thumb-layout">
+    <StyledWrapper>
       <h5>Thumbnail Layout</h5>
-      <div className="thumb-layout__options">
+      <StyledOptions>
         {Object.keys(THUMB_LAYOUT_OPTIONS).map((opt, i) => (
           <span key={i}>
-            <input
+            <StyledRadio
               id={`radio-layout-${i}`}
               type="radio"
               name="layout"
@@ -57,14 +84,14 @@ function ThumbLayout(): React.JSX.Element {
               checked={thumbLayout === opt}
               onChange={(ev) => setThumbLayout(ev.target.value)}
             />
-            <label htmlFor={`radio-layout-${i}`} title={THUMB_LAYOUT_OPTIONS[opt].title}>
+            <StyledLabel htmlFor={`radio-layout-${i}`} title={THUMB_LAYOUT_OPTIONS[opt].title}>
               <span>{THUMB_LAYOUT_OPTIONS[opt].title}</span>
               {THUMB_LAYOUT_OPTIONS[opt].icon}
-            </label>
+            </StyledLabel>
           </span>
         ))}
-      </div>
-    </div>
+      </StyledOptions>
+    </StyledWrapper>
   )
 }
 

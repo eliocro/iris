@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
-import Footer from '../footer'
-import Content from '../content'
+import Footer from './footer/Footer'
+import Content from './Content'
 
-import './style.scss'
+const StyledWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 interface SelectedImages {
   [hash: number]: string
@@ -39,11 +43,11 @@ function App(): React.JSX.Element {
   }, [])
 
   return (
-    <div className="wrapper">
+    <StyledWrapper>
       <h1 className="hidden">Iris</h1>
       <Content selected={selected} selectImage={selectImage} clearSelection={clearSelection} />
       <Footer selected={selected} />
-    </div>
+    </StyledWrapper>
   )
 }
 

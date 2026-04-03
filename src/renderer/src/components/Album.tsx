@@ -1,9 +1,13 @@
 import React from 'react'
-import Gallery from '../gallery'
+import styled from 'styled-components'
+import Gallery from './Gallery'
+import { AlbumData, ImageItem } from '../data'
 
-import { AlbumData, ImageItem } from '../../data'
-
-import './style.scss'
+const StyledArticle = styled.article`
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+`
 
 interface SelectedImages {
   [hash: number]: string
@@ -18,7 +22,7 @@ interface AlbumProps {
 
 function Album({ data, selected, selectImage, clearSelection }: AlbumProps): React.JSX.Element {
   return (
-    <article className="album">
+    <StyledArticle>
       <h2>{data.title}</h2>
       <p>{data.description}</p>
       <Gallery
@@ -27,7 +31,7 @@ function Album({ data, selected, selectImage, clearSelection }: AlbumProps): Rea
         selectImage={selectImage}
         clearSelection={clearSelection}
       />
-    </article>
+    </StyledArticle>
   )
 }
 
