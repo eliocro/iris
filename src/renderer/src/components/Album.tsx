@@ -1,26 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import Gallery from './Gallery'
-import { AlbumData, ImageItem } from '../data'
+import styled from 'styled-components';
+
+import Gallery from './Gallery';
+import { AlbumData, ImageItem } from '../data';
 
 const StyledArticle = styled.article`
   &:not(:last-child) {
     margin-bottom: 40px;
   }
-`
+`;
 
 interface SelectedImages {
-  [hash: number]: string
+  [hash: number]: string;
 }
 
 interface AlbumProps {
-  data: AlbumData
-  selected: SelectedImages
-  selectImage: (image: ImageItem, withKey: boolean) => void
-  clearSelection: () => void
+  data: AlbumData;
+  selected: SelectedImages;
+  selectImage: (image: ImageItem, withKey: boolean) => void;
+  clearSelection: () => void;
 }
 
-function Album({ data, selected, selectImage, clearSelection }: AlbumProps): React.JSX.Element {
+function Album({ data, selected, selectImage, clearSelection }: AlbumProps) {
   return (
     <StyledArticle>
       <h2>{data.title}</h2>
@@ -32,7 +32,7 @@ function Album({ data, selected, selectImage, clearSelection }: AlbumProps): Rea
         clearSelection={clearSelection}
       />
     </StyledArticle>
-  )
+  );
 }
 
-export default Album
+export default Album;

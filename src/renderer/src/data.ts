@@ -31,7 +31,7 @@ export const albums: string[] = [
   'Blicprus Statesslefa',
   'Bepa Iirial',
   'Jiroon',
-]
+];
 
 export const images: string[] = [
   'https://picsum.photos/400/250',
@@ -49,17 +49,17 @@ export const images: string[] = [
   'https://picsum.photos/280/250',
   'https://picsum.photos/640/250',
   'https://picsum.photos/120/250',
-]
+];
 
 export interface ImageItem {
-  url: string
-  hash: number
+  url: string;
+  hash: number;
 }
 
 export interface AlbumData {
-  title: string
-  description: string
-  images: ImageItem[]
+  title: string;
+  description: string;
+  images: ImageItem[];
 }
 
 // data functions
@@ -71,30 +71,32 @@ export function getAlbums(): AlbumData[] {
     images: images
       .map((url) => ({ url, hash: getHash(title + url) }))
       .sort(() => 0.5 - Math.random()),
-  }))
+  }));
 }
 
 export function getHash(str = ''): number {
-  let hash = 0
+  let hash = 0;
   for (let i = 0, l = str.length; i < l; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i)
-    hash |= 0
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
   }
-  return hash
+  return hash;
 }
 
 // other helpers
 
 export function setImageHeight(px = 180): void {
-  document.documentElement.style.setProperty('--image-height', px + 'px')
+  document.documentElement.style.setProperty('--image-height', px + 'px');
 }
 
 export function setSidebarWidth(px = 250): void {
-  document.documentElement.style.setProperty('--sidebar-width', px + 'px')
+  document.documentElement.style.setProperty('--sidebar-width', px + 'px');
 }
 
 export function setImageLayout(layout: string): void {
-  const list = document.body.classList
-  Array.from(list).forEach((cls) => cls.startsWith('thumb-layout--') && list.remove(cls))
-  list.add('thumb-layout--' + layout)
+  const list = document.body.classList;
+  Array.from(list).forEach(
+    (cls) => cls.startsWith('thumb-layout--') && list.remove(cls),
+  );
+  list.add('thumb-layout--' + layout);
 }

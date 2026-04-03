@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 // Design tokens (were SCSS variables)
 const colors = {
@@ -11,12 +11,12 @@ const colors = {
   white: '#FFFFFF',
   green: '#1ab854',
   border1: '#282828',
-}
+};
 
-export { colors }
+export { colors };
 
-export const FOOTER_HEIGHT = '90px'
-export const SIDEBAR_WIDTH = '250px'
+export const FOOTER_HEIGHT = '90px';
+export const SIDEBAR_WIDTH = '250px';
 
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
@@ -62,6 +62,6 @@ const GlobalStyles = createGlobalStyle`
       font-size: 0.85em;
     }
   }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

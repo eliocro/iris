@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import { colors, FOOTER_HEIGHT } from '../GlobalStyles'
-import { albums } from '../data'
+import styled from 'styled-components';
+
+import { colors, FOOTER_HEIGHT } from '../GlobalStyles';
+import { albums } from '../data';
 
 const StyledAside = styled.aside`
   position: fixed;
@@ -32,9 +32,9 @@ const StyledAside = styled.aside`
       cursor: pointer;
     }
   }
-`
+`;
 
-function AlbumList(): React.JSX.Element {
+function AlbumList() {
   return (
     <StyledAside>
       <h3>Albums</h3>
@@ -44,7 +44,7 @@ function AlbumList(): React.JSX.Element {
         ))}
       </ul>
     </StyledAside>
-  )
+  );
 }
 
-export default AlbumList
+export default AlbumList;

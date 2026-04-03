@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ImageItem } from '../data'
+import React from 'react';
+import styled from 'styled-components';
+import { ImageItem } from '../data';
 
 const StyledSection = styled.section`
   min-height: var(--image-height);
@@ -23,7 +23,7 @@ const StyledSection = styled.section`
       display: block;
     }
   }
-`
+`;
 
 const StyledImageDiv = styled.div<{ $selected: boolean }>`
   display: block;
@@ -52,24 +52,29 @@ const StyledImageDiv = styled.div<{ $selected: boolean }>`
     `
     box-shadow: inset 0px 0px 0px 4px rgba(255, 255, 255, 0.75);
   `}
-`
+`;
 
 interface SelectedImages {
-  [hash: number]: string
+  [hash: number]: string;
 }
 
 interface GalleryProps {
-  images: ImageItem[]
-  selected: SelectedImages
-  selectImage: (image: ImageItem, withKey: boolean) => void
-  clearSelection: () => void
+  images: ImageItem[];
+  selected: SelectedImages;
+  selectImage: (image: ImageItem, withKey: boolean) => void;
+  clearSelection: () => void;
 }
 
-function Gallery({ images, selected, selectImage, clearSelection }: GalleryProps): React.JSX.Element {
+function Gallery({
+  images,
+  selected,
+  selectImage,
+  clearSelection,
+}: GalleryProps) {
   const onImageClick = (ev: React.MouseEvent, idx: number): void => {
-    ev.stopPropagation()
-    selectImage(images[idx], ev.ctrlKey || ev.metaKey)
-  }
+    ev.stopPropagation();
+    selectImage(images[idx], ev.ctrlKey || ev.metaKey);
+  };
 
   return (
     <StyledSection onClick={() => clearSelection()}>
@@ -85,7 +90,7 @@ function Gallery({ images, selected, selectImage, clearSelection }: GalleryProps
         </StyledImageDiv>
       ))}
     </StyledSection>
-  )
+  );
 }
 
-export default Gallery
+export default Gallery;

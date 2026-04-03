@@ -1,12 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const PREVIEW_HEIGHT = '40px'
+const PREVIEW_HEIGHT = '40px';
 
 const StyledWrapper = styled.div`
   position: relative;
   --preview-height: ${PREVIEW_HEIGHT};
-`
+`;
 
 const StyledOverlay = styled.div`
   position: absolute;
@@ -19,7 +18,7 @@ const StyledOverlay = styled.div`
     font-weight: 700;
     text-shadow: 0 0 5px black;
   }
-`
+`;
 
 const StyledList = styled.ul`
   overflow: hidden;
@@ -27,7 +26,7 @@ const StyledList = styled.ul`
   padding: 0;
   height: var(--preview-height);
   text-align: center;
-`
+`;
 
 const StyledItem = styled.li`
   display: inline-block;
@@ -39,19 +38,19 @@ const StyledItem = styled.li`
   background-repeat: no-repeat;
   opacity: 0.4;
   list-style: none;
-`
+`;
 
 interface SelectedImages {
-  [hash: number]: string
+  [hash: number]: string;
 }
 
 interface SelectionPreviewProps {
-  selected: SelectedImages
+  selected: SelectedImages;
 }
 
-function SelectionPreview({ selected }: SelectionPreviewProps): React.JSX.Element {
-  const selectedCount = Object.keys(selected).length
-  const selectedImages = Object.values(selected)
+function SelectionPreview({ selected }: SelectionPreviewProps) {
+  const selectedCount = Object.keys(selected).length;
+  const selectedImages = Object.values(selected);
 
   return (
     <StyledWrapper>
@@ -68,7 +67,7 @@ function SelectionPreview({ selected }: SelectionPreviewProps): React.JSX.Elemen
         ))}
       </StyledList>
     </StyledWrapper>
-  )
+  );
 }
 
-export default SelectionPreview
+export default SelectionPreview;

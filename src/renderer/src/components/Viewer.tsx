@@ -1,12 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   /* image viewer — stub */
-`
+`;
 
-function Viewer(): React.JSX.Element {
-  return <StyledDiv />
+function Viewer() {
+  return <StyledDiv />;
 }
 
-export default Viewer
+export default Viewer;

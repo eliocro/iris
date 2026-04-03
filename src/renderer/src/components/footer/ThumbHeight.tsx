@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { colors } from '../../GlobalStyles'
-import { setImageHeight } from '../../data'
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-const StyledWrapper = styled.div``
+import { colors } from '../../GlobalStyles';
+import { setImageHeight } from '../../data';
+
+const StyledWrapper = styled.div``;
 
 const StyledRange = styled.input`
   -webkit-appearance: none;
@@ -36,24 +37,24 @@ const StyledRange = styled.input`
     border-radius: 6px;
     background-color: ${colors.white};
   }
-`
+`;
 
-const DEF_THUMB_HEIGHT = 180
+const DEF_THUMB_HEIGHT = 180;
 
-function ThumbHeight(): React.JSX.Element {
-  const [thumbHeight, setThumbHeight] = useState(0)
+function ThumbHeight() {
+  const [thumbHeight, setThumbHeight] = useState(0);
 
   useEffect(() => {
-    const h = window.localStorage.getItem('IRIS_IMAGE_HEIGHT')
-    setThumbHeight(parseInt(h ?? '') || DEF_THUMB_HEIGHT)
-  }, [])
+    const h = window.localStorage.getItem('IRIS_IMAGE_HEIGHT');
+    setThumbHeight(parseInt(h ?? '') || DEF_THUMB_HEIGHT);
+  }, []);
 
   useEffect(() => {
     if (thumbHeight) {
-      setImageHeight(thumbHeight)
-      window.localStorage.setItem('IRIS_IMAGE_HEIGHT', String(thumbHeight))
+      setImageHeight(thumbHeight);
+      window.localStorage.setItem('IRIS_IMAGE_HEIGHT', String(thumbHeight));
     }
-  }, [thumbHeight])
+  }, [thumbHeight]);
 
   return (
     <StyledWrapper>
@@ -67,7 +68,7 @@ function ThumbHeight(): React.JSX.Element {
         onChange={(ev) => setThumbHeight(Number(ev.target.value))}
       />
     </StyledWrapper>
-  )
+  );
 }
 
-export default ThumbHeight
+export default ThumbHeight;
